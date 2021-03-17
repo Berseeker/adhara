@@ -28,11 +28,6 @@ class CreateCategoriasCuartoTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreignId('amenidad_cuarto_id')
-                ->constrained('amenidades_cuarto')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-
             $table->timestamps();
             $table->softDeletes();
         });

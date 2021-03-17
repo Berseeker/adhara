@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoXCambioTable extends Migration
+class AddCategoriaColumnToAmenidadesCuartoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateTipoXCambioTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_x_cambio', function (Blueprint $table) {
-            $table->id();
-            $table->double('valor_respecto_dolar');
-            $table->foreignId('pais_id')
-                ->constrained('paises')
+        Schema::table('amenidades_cuarto', function (Blueprint $table) {
+
+            $table->foreignId('categoria_cuarto_id')
+                ->constrained('categorias_cuarto')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -33,6 +30,8 @@ class CreateTipoXCambioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_x_cambio');
+        Schema::table('amenidades_cuarto', function (Blueprint $table) {
+            $table->dropForeign('categoria_cuarto_id');
+        });
     }
 }

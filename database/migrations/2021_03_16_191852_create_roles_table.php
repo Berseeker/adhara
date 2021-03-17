@@ -17,8 +17,9 @@ class CreateRolesTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->json('permisos')->nullable();
-            $table->string('tag_roles');
+            $table->string('tag_rol');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

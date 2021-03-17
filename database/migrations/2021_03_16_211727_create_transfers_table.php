@@ -22,6 +22,10 @@ class CreateTransfersTable extends Migration
             $table->string('paxs');
             $table->string('adultos');
             $table->string('infantes');
+            $table->foreignId('paquete_transfer_id')
+                ->constrained('paquetes_transfers')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

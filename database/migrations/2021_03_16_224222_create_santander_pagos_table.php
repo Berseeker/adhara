@@ -33,7 +33,7 @@ class CreateSantanderPagosTable extends Migration
             $table->string('name');
 
             $table->foreignId('santander_request_id')
-                ->constrained('santander_request')
+                ->constrained('santander_requests')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 

@@ -22,6 +22,10 @@ class CreatePaquetesTransfersTable extends Migration
             $table->double('tarifa_x_adulto_usd');
             $table->double('tarifa_x_infante_usd');
             $table->string('tag_paquete_transfer');
+            $table->foreignId('hotel_id')
+                ->constrained('hoteles')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
